@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<rss version="2.0">  
+  <channel>
+    <title>Upfeed</title>
+    <description>Upfeed</description>
+    <link><%= feed_entry_url(@conn, :index, @feed_name) %></link>
+    <%= for item <- @items do %>
+      <item>
+        <title>
+          <![CDATA[<%= item %>]]>
+        </title>
+        <link><%= feed_entry_url(@conn, :show, @feed_name, item) %></link>
+        <description>
+        </description>
+        <guid isPermaLink="true"><%= feed_entry_url(@conn, :show, @feed_name, item) %>
+      </item>
+    <% end %>
+  </channel>
+</rss>  

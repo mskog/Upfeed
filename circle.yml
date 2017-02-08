@@ -1,0 +1,18 @@
+dependencies:
+  pre:
+    - bash circle_prepare.sh
+  cache_directories:
+    - ~/dependencies
+    - ~/.mix
+    - _build
+    - deps
+
+test:
+  override:
+    - bash circle_test.sh
+
+deployment:
+  production:
+    branch: master
+    commands:
+      # - git push dokku@$DEPLOY_HOST:upfeed master
