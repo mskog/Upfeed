@@ -6,5 +6,9 @@ config :upfeed, Upfeed.Endpoint,
   http: [port: 4001],
   server: false
 
+config :upfeed,
+  storage_dir: 'test/fixtures/uploads'
+
 # Print only warnings and errors during test
 config :logger, level: :warn
+

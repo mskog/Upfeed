@@ -10,9 +10,3 @@ dependencies:
 test:
   override:
     - bash circle_test.sh
-
-deployment:
-  production:
-    branch: master
-    commands:
-      # - git push dokku@$DEPLOY_HOST:upfeed master

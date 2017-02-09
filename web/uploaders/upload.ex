@@ -4,6 +4,7 @@ defmodule Upfeed.Upload do
   # Include ecto support (requires package arc_ecto installed):
   # use Arc.Ecto.Definition
 
+  @storage_dir Application.get_env(:upfeed, :storage_dir)
   @versions [:original]
 
   # To add a thumbnail version:
@@ -25,9 +26,9 @@ defmodule Upfeed.Upload do
   # end
 
   # Override the storage directory:
-  # def storage_dir(version, {file, scope}) do
-  #   "uploads/user/avatars/#{scope.id}"
-  # end
+  def storage_dir(_version, {file, scope}) do
+    @storage_dir
+  end
 
   # Provide a default URL if there hasn't been a file uploaded
   # def default_url(version, scope) do

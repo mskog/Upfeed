@@ -36,6 +36,8 @@ defmodule Upfeed.Mixfile do
      {:cowboy, "~> 1.0"},
      {:arc, "~> 0.7"},
      {:timex, "~> 3.1"},
+     {:mix_test_watch, "~> 0.3", only: :dev},
+     {:feeder_ex, "~> 1.0", only: :test}
     ]
   end
 end

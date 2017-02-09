@@ -11,15 +11,23 @@ defmodule Upfeed.FeedEntryController do
       {:error, :enoent} ->
         conn
         |> put_status(404)
-        |> text("404")
-    end
+        |> put_view(Upfeed.ErrorView)
+        |> render("404.html")
+      end
   end
 
   def show(conn, %{"feed" => feed_name, "file" => filename}) do
     path = Upfeed.Feed.file_path(feed_name, filename)
 
-    conn
-    |> put_resp_header("content-disposition", ~s(attachment; filename="#{filename}"))
-    |> send_file(200, path)
+    if File.exists?(path) do
+      conn
+      |> put_resp_header("content-disposition", ~s(attachment; filename="#{filename}"))
+      |> send_file(200, path)
+    else
+      conn
+      |> put_status(404)
+      |> put_view(Upfeed.ErrorView)
+      |> render("404.html")
+    end
   end
 end

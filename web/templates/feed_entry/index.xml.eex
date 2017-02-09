@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>  
 <rss version="2.0">  
   <channel>
-    <title>Upfeed</title>
-    <description>Upfeed</description>
+    <title><%= feed_title(@feed_name) %></title>
+    <description><%= feed_description(@feed_name) %></description>
     <link><%= feed_entry_url(@conn, :index, @feed_name) %></link>
     <%= for item <- @items do %>
       <item>
@@ -12,7 +12,7 @@
         <link><%= feed_entry_url(@conn, :show, @feed_name, item) %></link>
         <description>
         </description>
-        <guid isPermaLink="true"><%= feed_entry_url(@conn, :show, @feed_name, item) %>
+        <guid isPermaLink="true"><%= feed_entry_url(@conn, :show, @feed_name, item) %> </guid>
       </item>
     <% end %>
   </channel>
