@@ -17,7 +17,7 @@ defmodule Upfeed.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Upfeed, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext]]
+     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext, :tzdata]]
   end
 
   # Specifies which paths to compile per environment.
@@ -34,6 +34,8 @@ defmodule Upfeed.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:arc, "~> 0.7"}]
+     {:arc, "~> 0.7"},
+     {:timex, "~> 3.1"},
+    ]
   end
 end

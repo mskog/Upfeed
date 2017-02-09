@@ -2,7 +2,7 @@ defmodule Upfeed.FeedEntryController do
   use Upfeed.Web, :controller
 
   def index(conn, %{"feed" => feed_name}) do
-    case Path.join(["uploads", feed_name]) |> File.ls do
+    case Upfeed.Feed.files(feed_name) do
       {:ok, filenames} ->
         conn
         |> put_layout(:none)
@@ -16,11 +16,10 @@ defmodule Upfeed.FeedEntryController do
   end
 
   def show(conn, %{"feed" => feed_name, "file" => filename}) do
-    path = Path.join(["uploads", feed_name, filename])
+    path = Upfeed.Feed.file_path(feed_name, filename)
 
-    conn 
-    |> put_resp_header("content-disposition", 
-                       ~s(attachment; filename="#{filename}"))
+    conn
+    |> put_resp_header("content-disposition", ~s(attachment; filename="#{filename}"))
     |> send_file(200, path)
   end
 end
