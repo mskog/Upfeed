@@ -21,4 +21,4 @@ docker-compose.yml
 config/dev.secret.exs
 
 # Upload directory
-uploads
+/uploads
